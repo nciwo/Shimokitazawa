@@ -1,9 +1,13 @@
 package com.renia.shimokitazawa;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -24,6 +28,17 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        if (Build.VERSION.SDK_INT >= 23) {
+            Window window = this.getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            // parameter를 하나만 받는 getColor() 메소드는 deprecated라서 getTheme()을 통해 테마를 가져와야 함
+//            window.setStatusBarColor(this.getResources().getColor(R.color.primaryColor));
+            window.setStatusBarColor(this.getResources().getColor(R.color.primaryColor, getTheme()));
+        }
+
+
 
         ArrayList<String> list = new ArrayList<>();
         for(int i = 0; i < 100; ++i) {

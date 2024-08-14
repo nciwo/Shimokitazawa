@@ -16,7 +16,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TEST"
+        android:text="Test"
         android:textSize="20sp"
         app:layout_constraintTop_toTopOf="@id/trip_list_item_img"
         app:layout_constraintLeft_toRightOf="@id/trip_list_item_img"
